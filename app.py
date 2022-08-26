@@ -1,4 +1,3 @@
-
 user_invose = {
     "time" : 13,
     "user" : 1,
@@ -12,7 +11,7 @@ user_invose = {
         {
             "id": 2,
             "title":"kala2",
-            "number":7
+            "number":1
         }
     ]
 }
@@ -20,8 +19,8 @@ user_invose = {
 warehouse =[
     {
         "id":1,
-        "titlte":"kala1",
-        "Price":1500,
+        "title":"kala1",
+        "price":1500,
         "inventory":2
     },
     {
@@ -37,3 +36,36 @@ warehouse =[
         "inventory": 0
     }
 ]
+
+def checkInvoice(orders, warehouse):
+    x = []
+    for order in orders:
+        # print(x["title"])
+        for y in warehouse:
+            # print(y["title"])
+            if order['title'] == y['title']:
+                # print("kalay " + y['title'] + " dar anbar yafat shod")
+                if order['number'] <= y["inventory"]:
+                    # print ("kalay " + x["title"] + " be tedade " + str(y["inventory"]) + " ta dar anbar mojod ast")
+                    x.append(order) 
+    return x
+
+def total_items(ssss,warehouse):
+    total = 0
+    for x in ssss:
+        total = x['number'] + total
+    return total
+
+def total_price(price,warehouse):
+    total = 0
+    for x in price:
+        # print(x["number"])
+        for y in warehouse:
+            # print(y["title"])
+            if x["title"] == y["title"]:
+                # print(y)
+                total = ( x['number'] * y['price'] ) + total              
+    return total                
+
+
+total_price(user_invose["order"],warehouse)
